@@ -1,0 +1,224 @@
+#toolbar,.span9 textarea {
+    /*display:none;*/
+    float: left;
+    width: 100%;
+    padding-left:5px;
+    padding-right:5px;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.span9 textarea {
+height: 555px;
+max-height: 555px;  
+border: 2px solid green;
+font-family: Verdana;
+font-size: 15px;
+resize: none;
+overflow:auto;
+}
+
+/*.span9 textarea:focus {
+color: black;
+border: 2px solid black;
+}*/
+
+#toolbar {
+display: block;
+border-radius: 3px;
+border: 1px solid #D6DFE9;
+margin-bottom: 8px;
+line-height: 1em;
+background: #EFF4F9
+}
+
+#toolbar a {
+display: inline-block;
+height: 1.5em;
+border-radius: 3px;
+font-size: 9px;
+line-height: 1.5em;
+text-decoration: none;
+border: 1px solid #ddd;
+background: #DFE6EE;
+margin-top:3px;
+border: 2px solid #EFF4F9
+/*padding: 0 0.2em;
+margin: 1px 0;*/
+}
+
+#toolbar a.wysihtml5-command-active, #toolbar .wysihtml5-action-active {
+background: #99AACC;
+border: 2px solid #66ccff
+/*color: white;*/
+}
+
+#toolbar div.dialog{
+	z-index:9999;
+	position:absolute;
+	/*left:-999em;*/
+	height:auto;
+	width:auto;
+    padding-left:6px;
+    padding-right:6px;
+    /*
+	border-left:1px solid #66ccff;
+    border-right:1px solid #66ccff;
+    border-top:1px solid #66ccff;
+	border-bottom:1px solid #66ccff;
+    */
+    background:#EFF4F9;
+    border: 1px solid #ddd;
+}
+
+#toolbar div.dialog input{
+    margin-top:8px;
+}
+
+#toolbar .block { 
+display: inline-block;
+border-radius: 3px;
+margin-right:10px;
+/*background: #eee;
+margin: 0px 1px 1px 0;
+padding: 1px 1px;*/
+}
+
+#toolbar  a.bold{
+width: 32px;
+height: 32px;
+background-image: url("../img/editor/bold.png");
+background-position: 0px 0px;
+background-repeat: no-repeat;
+}
+
+#toolbar  a.italic{
+width: 32px;
+height: 32px;
+background-image: url("../img/editor/italic.png");
+background-position: 0 0;
+background-repeat: no-repeat;
+}
+
+#toolbar  a.underline{
+width: 32px;
+height: 32px;
+background-image: url("../img/editor/underline.png");
+background-position: 0 0;
+background-repeat: no-repeat;
+}
+
+#toolbar  a.superscript{
+width: 32px;
+height: 32px;
+background-image: url("../img/editor/superscript.png");
+background-position: 0 0;
+background-repeat: no-repeat;
+}
+
+#toolbar  a.subscript{
+width: 32px;
+height: 32px;
+background-image: url("../img/editor/subscript.png");
+background-position: 0 0;
+background-repeat: no-repeat;
+}
+
+#toolbar  a.alignleft{
+width: 32px;
+height: 32px;
+background-image: url("../img/editor/align-left.png");
+background-position: 0 0;
+background-repeat: no-repeat;
+}
+
+#toolbar  a.alignright{
+width: 32px;
+height: 32px;
+background-image: url("../img/editor/align-right.png");
+background-position: 0 0;
+background-repeat: no-repeat;
+}
+
+#toolbar  a.aligncenter{
+width: 32px;
+height: 32px;
+background-image: url("../img/editor/align-center.png");
+background-position: 0 0;
+background-repeat: no-repeat;
+}
+
+#toolbar  a.fontsize{
+width: 32px;
+height: 32px;
+background-image: url("../img/editor/font-size.png");
+background-position: 0 0;
+background-repeat: no-repeat;
+}
+
+#toolbar  a.undo{
+width: 32px;
+height: 32px;
+background-image: url("../img/editor/undo.png");
+background-position: 0 0;
+background-repeat: no-repeat;
+}
+
+#toolbar  a.redo{
+width: 32px;
+height: 32px;
+background-image: url("../img/editor/redo.png");
+background-position: 0 0;
+background-repeat: no-repeat;
+}
+
+#toolbar  a.listbullet{
+width: 32px;
+height: 32px;
+background-image: url("../img/editor/list-bullets.png");
+background-position: 0 0;
+background-repeat: no-repeat;
+}
+
+#toolbar  a.listnumber{
+width: 32px;
+height: 32px;
+background-image: url("../img/editor/list-numbers.png");
+background-position: 0 0;
+background-repeat: no-repeat;
+}
+
+#toolbar  a.html{
+width: 32px;
+height: 32px;
+background-image: url("../img/editor/html.png");
+background-position: 0 0;
+background-repeat: no-repeat;
+}
+
+#toolbar  a.link{
+width: 32px;
+height: 32px;
+background-image: url("../img/editor/link.png");
+background-position: 0 0;
+background-repeat: no-repeat;
+}
+
+#toolbar  a.image{
+width: 32px;
+height: 32px;
+background-image: url("../img/editor/image.png");
+background-position: 0 0;
+background-repeat: no-repeat;
+}
+
+#toolbar  a.forecolor{
+width: 32px;
+height: 32px;
+background-image: url("../img/editor/color.png");
+background-position: 0 0;
+background-repeat: no-repeat;
+}
+

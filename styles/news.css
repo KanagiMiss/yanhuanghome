@@ -1,0 +1,28 @@
+/*
+Template Name: School Education
+File: Forms CSS
+Author: OS Templates
+Author URI: #
+Licence: <a href="#">Website Template Licence</a>
+*/
+
+/* ----------------------------------------------news list-------------------------------------*/
+
+#content{display:block;}
+
+#content .news_list{
+	display:block;
+	float:left;
+	}
+
+#content .news_list li{
+	display:block;
+    width:800px;
+	margin:0 0 10px 0;
+	padding:0 0 8px 0;
+	border-bottom:1px dotted #999999;
+	}
+
+#content .news_list span.date{
+    float:right;
+    }
