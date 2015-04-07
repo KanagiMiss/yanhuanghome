@@ -1,6 +1,19 @@
+<script type="text/javascript">
+    var formSubmitting = false;
+    var setFormSubmitting = function () { formSubmitting = true; }
+
+    window.onbeforeunload = function () {
+        if (formSubmitting) {
+            return undefined;
+        }
+        if ($("#textarea").val() != "" || $("#title").val() != "") {
+            return '注意，您将离开本页面（未保存的数据会消失）';
+        }
+    }
+</script>
 <div class="controls">
 <label class="control-label" for="title" style="font-size:20px;">标题</label>
-<input type="text" class="input-xlarge" id="title" value="" style="width:80%;"/>
+<input type="text" class="input-xlarge" name="title" id="title" value="" style="width:80%;"/>
 </div>
 <div id="toolbar">
 <div class="block">
@@ -112,4 +125,4 @@
 </div>
 </div>
 <!-- element to edit -->
-<textarea id="textarea" placeholder="输入内容 ..."></textarea>
+<textarea id="textarea" name="content" placeholder="输入内容 ..."></textarea>

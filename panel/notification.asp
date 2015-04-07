@@ -44,10 +44,10 @@ session("current_manage_page")="notification.asp"
 				<tbody>
                 <%
                 response.expires=-1
-                sql="SELECT ID,ntype,ntitle,nauthor,ndate FROM notification ORDER BY notification.ID ASC;"
+                sql="SELECT ID,ntype,ntitle,nauthor,ndate FROM notification ORDER BY notification.ID DESC;"
 
                 set conn=Server.CreateObject("ADODB.Connection")
-                conn.Provider="Microsoft.ACE.OLEDB.12.0"
+                conn.Provider=Application("dbProvider")
                 conn.CursorLocation = 3
                 url = Server.Mappath("../data/main.mdb")
                 conn.Open(url)
@@ -106,7 +106,7 @@ session("current_manage_page")="notification.asp"
                         response.Write("<td><div class='btn-group'><a class='btn btn-mini dropdown-toggle'" &_
                                        " data-toggle='dropdown' href='#'>操作<span class='caret'></span></a>" &_
 							           "<ul class='dropdown-menu'>" &_
-								       "<li><a href='actions/updateitem.asp?type=notification&id=" & id & "'><i class='icon-pencil'></i> 编辑 </a></li>" &_
+								       "<li><a href='edit-page.asp?type=notification&id=" & id & "'><i class='icon-pencil'></i> 编辑 </a></li>" &_
 								       "<li><a href='actions/deleteitem.asp?type=notification&id=" & id & "&page=" & intpage & "'><i class='icon-trash'></i> 删除 </a></li>" &_
 							           "</ul></div></td>")
                         response.Write("</tr>")

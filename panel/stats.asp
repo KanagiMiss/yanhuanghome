@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>����</title>
+    <title>概览</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Admin panel developed with the Bootstrap from Twitter.">
     <meta name="author" content="travis">
@@ -30,11 +30,13 @@
         <div class="span9">
 		  <div class="row-fluid">
 			<div class="page-header">
-				<h1>Site Stats <small>Some statistics...</small></h1>
+				<h1>网站概览<small>概览</small></h1>
 			</div>
-			<div id="placeholder" style="width:80%;height:300px;"></div>
+			<!--<div id="placeholder" style="width:80%;height:300px;"></div>
 			<br />
-			<div id="visits" style="width:80%;height:300px;"></div>
+			<div id="visits" style="width:80%;height:300px;"></div>-->
+            <br />
+            <p>在线人数：<%=Application("visitors") %></p>
 		  </div>
         </div>
       </div>

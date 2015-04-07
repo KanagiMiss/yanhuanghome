@@ -4,6 +4,8 @@ if Session("curr_page")=curr then
     response.write("active")
 end if
 end sub
+'response.Write(session.Timeout)
+'response.Write(Session("client_ip"))
 %>
 
 <div class="wrapper col0">

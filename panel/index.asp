@@ -28,21 +28,71 @@
             <p><a class="btn btn-success btn-large" href="my-profile.asp">点我修改个人资料 &raquo;</a></p>
           </div>
           <div class="row-fluid">
+            <%
+            Function myDateFormat(myDate)
+                'd = WhatEver(Day(myDate))
+                'm = WhatEver(Month(myDate))
+                d = Day(myDate)
+                m = Month(myDate)   
+                y = Year(myDate)
+                myDateFormat= y & "/" & m & "/" & d
+            End Function
+
+            Function WhatEver(num)
+                If(Len(num)=1) Then
+                    WhatEver="0"&num
+                Else
+                    WhatEver=num
+                End If
+            End Function
+
+            Sub writeStat(ptype,stat)
+                response.expires=-1
+                yesterday=Date()-1
+                tommorrow=Date()+1         
+                sql1="SELECT COUNT(*) AS cnt FROM "&ptype&";"
+                sql2="SELECT COUNT(*) AS cnt FROM "&ptype&" WHERE ndate BETWEEN #"&myDateFormat(yesterday)&"# AND #"&myDateFormat(tommorrow)&"#;"
+                if stat=1 then
+                    sql=sql1
+                elseif stat=2 then
+                    sql=sql2
+                else
+                    sql=sql1
+                end if
+                set conn=Server.CreateObject("ADODB.Connection")
+                conn.Provider=Application("dbProvider")
+                url = Server.Mappath("../data/main.mdb")
+                conn.Open(url)
+                set rs=Server.CreateObject("ADODB.recordset")
+                rs.Open sql,conn
+
+                do until rs.EOF
+                    for each x in rs.Fields
+                        if x.name="cnt" then
+                            response.Write(x.value)
+                        end if
+                    next
+                    rs.MoveNext
+                loop
+                rs.Close
+                conn.Close
+            End Sub
+             %>
             <div class="span3">
               <h3>新闻总数</h3>
-              <p><a href="users.html" class="badge badge-inverse">563</a></p>
+              <p><a href="#" class="badge badge-inverse"><%call writeStat("news",1) %></a></p>
             </div>
             <div class="span3">
               <h3>今日新闻</h3>
-              <p><a href="users.html" class="badge badge-inverse">8</a></p>
+              <p><a href="#" class="badge badge-inverse"><%call writeStat("news",2) %></a></p>
             </div>
             <div class="span3">
               <h3>通知总数</h3>
-			  <p><a href="users.html" class="badge badge-inverse">2</a></p>
+			  <p><a href="#" class="badge badge-inverse"><%call writeStat("notification",1) %></a></p>
             </div>
             <div class="span3">
               <h3>今日通知</h3>
-			  <p><a href="roles.html" class="badge badge-inverse">3</a></p>
+			  <p><a href="#" class="badge badge-inverse"><%call writeStat("notification",2) %></a></p>
             </div>
           </div>
 		  <br />
@@ -54,36 +104,64 @@
 				<thead>
 					<tr>
 						<th>ID</th>
-						<th>Name</th>
-						<th>E-mail</th>
-						<th>Phone</th>
-						<th>City</th>
-						<th>Role</th>
-						<th>Status</th>
-						<th>Actions</th>
+						<th>文章类型</th>
+						<th>标题</th>
+						<th>日期</th>
+						<th>操作</th>
 					</tr>
 				</thead>
 				<tbody>
-				<tr class="pending-user">
-					<td>564</td>
-					<td>John S. Schwab</td>
-					<td>johnschwab@provider.com</td>
-					<td>402-xxx-xxxx</td>
-					<td>Bassett, NE</td>
-					<td>User</td>
-					<td><span class="label label-important">Inactive</span></td>
-					<td><span class="user-actions"><a href="javascript:void(0);" class="label label-success">Approve</a> <a href="javascript:void(0);" class="label label-important">Reject</a></span></td>
-				</tr>
-				<tr class="pending-user">
-					<td>565</td>
-					<td>Juliana M. Sheffield</td>
-					<td>julianasheffield@provider.com</td>
-					<td>803-xxx-xxxx</td>
-					<td>Columbia, SC</td>
-					<td>User</td>
-					<td><span class="label label-important">Inactive</span></td>
-					<td><span class="user-actions"><a href="javascript:void(0);" class="label label-success">Approve</a> <a href="javascript:void(0);" class="label label-important">Reject</a></span></td>
-				</tr>
+                <%
+                Sub writeToday(ptype)
+                    response.expires=-1
+                    yesterday=Date()-1
+                    tommorrow=Date()+1                
+                    sql="SELECT ID,ntype,ntitle,nauthor,ndate FROM "&ptype&" WHERE nauthor='"&session("login_name")&_
+                        "' and ndate BETWEEN #"&myDateFormat(yesterday)&"#  AND #"&myDateFormat(tommorrow)&"# ORDER BY "&ptype&".ID DESC;"
+
+                    set conn=Server.CreateObject("ADODB.Connection")
+                    conn.Provider=Application("dbProvider")
+                    url = Server.Mappath("../data/main.mdb")
+                    conn.Open(url)
+                    set rs=Server.CreateObject("ADODB.recordset")
+                    rs.Open sql,conn
+
+                    if ptype="news" then
+                        ntype="新闻"
+                        session("current_manage_page")="news.asp"
+                    else
+                        ntype="通知"
+                        session("current_manage_page")="notification.asp"
+                    end if
+                    do until rs.EOF
+                        response.Write("<tr class='pending-user'>")
+                        for each x in rs.Fields
+                            if x.name="ID" then
+                                id=x.value
+                                response.Write("<td>" & x.value & "</td>")
+                            elseif x.name="ntype" then
+                                response.Write("<td>" & ntype & "</td>")
+                            elseif x.name="ntitle" then
+                                response.Write("<td>" & x.value & "</td>")
+                            elseif x.name="ndate" then
+                                dt = CDate(x.value)
+                                response.Write( "<td>" & DatePart("yyyy",dt) & "-"_ 
+                                                & Right("0" & DatePart("m",dt), 2) & "-"_ 
+                                                & Right("0" & DatePart("d",dt), 2) & "</td>")
+                            end if
+                        next
+                        response.Write("<td><span class='user-actions'><a href='edit-page.asp?type="&ptype&"&id=" & id & "' class='label label-success'>修改</a>"&_
+                                       "<a href='actions/deleteitem.asp?type="&ptype&"&id=" & id & "&page=" & -1 & "' class='label label-important'>删除</a></span></td>")
+                        response.Write("</tr>")
+                        rs.MoveNext
+                    loop
+                    rs.Close
+                    conn.Close
+                End Sub
+
+                call writeToday("news")
+                call writeToday("notification")
+                 %>
 				</tbody>
 			</table>
 		  </div>

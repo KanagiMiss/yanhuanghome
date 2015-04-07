@@ -2,10 +2,10 @@
     <%
     response.Write("<ul>")
     response.expires=-1
-    sql="SELECT TOP 15 ID,ntitle,ndate FROM notification ORDER BY notification.ndate DESC;"
+    sql="SELECT TOP 6 ID,ntitle,ndate FROM notification ORDER BY notification.ndate DESC;"
 
     set conn=Server.CreateObject("ADODB.Connection")
-    conn.Provider="Microsoft.ACE.OLEDB.12.0"
+    conn.Provider=Application("dbProvider")
     url = Server.Mappath("data/main.mdb")
     conn.Open(url)
     set rs=Server.CreateObject("ADODB.recordset")

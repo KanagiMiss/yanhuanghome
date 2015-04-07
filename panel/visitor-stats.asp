@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>����ͳ��</title>
+    <title>访问统计</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Admin panel developed with the Bootstrap from Twitter.">
     <meta name="author" content="travis">
@@ -30,9 +30,105 @@
         <div class="span9">
 		  <div class="row-fluid">
 			<div class="page-header">
-				<h1>Visitors Stats <small>Visitor statistics...</small></h1>
+				<h1>来访者数据 <small>来访者数据</small></h1>
 			</div>
-			<div id="placeholder" style="width:80%;height:300px;"></div>
+			<!--<div id="placeholder" style="width:80%;height:300px;"></div>-->
+            <br />
+            <table class="table table-striped table-bordered table-condensed">
+				<thead>
+					<tr>
+						<th>ID</th>
+                        <th>IP地址</th>
+						<th>来访时间</th>
+						<th>离开时间</th>
+						<th>帐号名</th>
+						<th>帐号ID</th>
+					</tr>
+				</thead>
+				<tbody>
+                <%
+                response.expires=-1
+                sql="SELECT ID,ip,entertime,leavetime,acountname,acountid FROM visitors ORDER BY visitors.ID DESC;"
+
+                set conn=Server.CreateObject("ADODB.Connection")
+                conn.Provider=Application("dbProvider")
+                conn.CursorLocation = 3
+                url = Server.Mappath("../data/main.mdb")
+                conn.Open(url)
+                set rs=Server.CreateObject("ADODB.recordset")
+                rs.Open sql,conn
+                    
+                if not rs.EOF or not rs.BOF then
+                    rs.PageSize=10
+
+                    intPageCount = rs.PageCount
+
+                    Select Case Request("action")
+                        case "goto"
+                            topage=Request("intpage")+0
+                            if topage < 1 then
+                                intpage = 1
+                            elseif topage > intPageCount then
+                                intpage = intPageCount
+                            else
+                                intpage = topage
+                            end if
+	                    case "first"
+		                    intpage = 1
+	                    case "prev"
+		                    intpage = Request("last")-1
+		                    if intpage < 1 or intpage > intPageCount then intpage = 1
+	                    case "next"
+		                    intpage = Request("last")+1
+		                    if intpage < 1 or intpage > intPageCount then intpage = intPageCount
+	                    Case "last"
+		                    intpage = intPageCount
+	                    case else
+		                    intpage = 1
+                    end select
+
+                    rs.AbsolutePage = intPage 
+
+                    For intRecord = 1 To rs.PageSize
+                        if rs.Fields(0).value <> Session("vid") then
+                            response.Write("<tr class='list-users'>")
+                            for each x in rs.Fields
+                                if x.name="ID" then
+                                    response.Write("<td>" & x.value & "</td>")
+                                elseif x.name="ip" then
+                                    response.Write("<td>" & x.value & "</td>")
+                                elseif x.name="entertime" or x.name="leavetime" then
+                                    response.Write("<td>" & x.value & "</td>")
+                                elseif x.name="acountname" then
+                                    response.Write("<td>" & x.value & "</td>")
+                                elseif x.name="acountid" then
+                                    response.Write("<td>" & x.value & "</td>")
+                                end if
+                            next
+                            response.Write("</tr>")
+                        end if
+                        rs.MoveNext
+                        If rs.EOF Then Exit For 
+                    next
+                 end if
+                 %>
+                </tbody>
+            </table>
+            <div class="pagination">
+				<ul>
+                    <li><a href="visitor-stats.asp?action=prev&last=<%=intpage%>">上一页</a></li>
+                    <%
+                    for i=1 to intPageCount
+                        toactive = ""
+                        if i=intPage then
+                            toactive="active"
+                        end if
+                        response.Write("<li class='" & toactive & "'><a href='visitor-stats.asp?action=goto&intpage=" & i & "'>" & i & "</a></li>")
+                    next
+                     %>
+					<li><a href="visitor-stats.asp?action=next&last=<%=intpage%>">下一页</a></li>
+				</ul>
+			</div>
 		  </div>
         </div>
       </div>

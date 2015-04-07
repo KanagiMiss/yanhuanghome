@@ -3,6 +3,13 @@ if session("islogin")<>"yes" then
     response.Redirect("../index.asp")
 end if
  %>
+<script type="text/javascript">
+    function keepalive() {
+        $.get("actions/keeponline.asp", function (data, status) {
+        });
+    }
+    timeId = setInterval("keepalive();", 60000);
+</script>
 <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container-fluid">

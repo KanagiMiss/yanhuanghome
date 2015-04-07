@@ -1,0 +1,42 @@
+<script language="vbscript" runat="server">
+
+Sub Application_OnStart
+Application("visitors")=0
+Application("dbProvider")="Microsoft.ACE.OLEDB.12.0"
+Application("dbPath")=Server.Mappath("/data/main.mdb")
+End Sub
+
+Sub Session_OnStart
+Application.Lock
+Application("visitors")=Application("visitors")+1
+Application.UnLock
+Session.TimeOut=3
+Session("client_ip")=Request.ServerVariables("REMOTE_ADDR")
+
+set conn=Server.CreateObject("ADODB.Connection")
+conn.Provider=Application("dbProvider")
+url = Application("dbPath")
+conn.Open(url)
+conn.Execute "INSERT INTO visitors(ip,entertime,leavetime) values('"&Session("client_ip")&"',NOW(),NOW())", , adCmdText + adExecuteNoRecords
+set rs=conn.Execute("SELECT @@Identity", , adCmdText)
+Session("vid")=rs.Fields(0).Value
+rs.Close
+conn.Close
+
+End Sub
+
+Sub Session_OnEnd
+Application.Lock
+Application("visitors")=Application("visitors")-1
+Application.UnLock
+
+set conn=Server.CreateObject("ADODB.Connection")
+conn.Provider=Application("dbProvider")
+url = Application("dbPath")
+conn.Open(url)
+conn.Execute "UPDATE visitors SET leavetime=NOW() WHERE ID="&Session("vid"), , adCmdText + adExecuteNoRecords
+conn.Close
+
+End Sub
+
+</script>

@@ -10,12 +10,16 @@ if Request("type")<>"" and Request("id")<>"" then
     end select
 
     set conn=Server.CreateObject("ADODB.Connection")
-    conn.Provider="Microsoft.ACE.OLEDB.12.0"
+    conn.Provider=Application("dbProvider")
     url = Server.Mappath("../../data/main.mdb")
     conn.Open(url)
     set rs=Server.CreateObject("ADODB.recordset")
     rs.Open sql,conn,1,3
     
-    response.Redirect("../" & session("current_manage_page") & "?action=goto&intpage=" & request("page"))
+    if(request("page") < 0) then
+        response.Redirect("../" & "index.asp")
+    else
+        response.Redirect("../" & session("current_manage_page") & "?action=goto&intpage=" & request("page"))
+    end if
 end if
 %>

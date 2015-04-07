@@ -234,15 +234,49 @@ div.wrapper h1, div.wrapper h2, div.wrapper h3, div.wrapper h4, div.wrapper h5, 
 
 /* ----------------------------------------------Content-------------------------------------*/
 
-#content{
+#content,#pagecontent{
 	display:block;
 	float:left;
-	width:600px;
 	}
     
-    
+#content{
+    width:600px;
+    }
+
 #content p{
     font-size:15px;
+    }
+
+#pagecontent{
+    width:100%;
+    margin-bottom:100px;
+    background-color: #eeeeee;
+    border-radius: 6px;
+    padding: 25px 18px 18px 25px;
+    border-right:2px solid #999999;
+    border-bottom:2px solid #999999;
+    }
+
+#pagecontent div.title{
+    color:#66ccff;
+    font-weight:bold;
+    font-size:26px;
+    text-align:center;
+    margin-bottom:10px;
+    /*border-bottom:1px dotted #999999;
+    border-left-width:50px;*/
+    }
+    
+#pagecontent div.date{
+    font-size:16px;
+    text-align:center;
+    margin-top:6px;
+    margin-bottom:8px;
+    }
+
+#pagecontent div.content{
+    font-size:15px;
+    margin-bottom:16px;
     }
 
 

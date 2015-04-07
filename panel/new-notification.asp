@@ -31,7 +31,7 @@
                         <h1>
                             通知录入 <small>新建通知</small></h1>
                     </div>
-                    <form action="">
+                    <form action="actions/addnotification.asp" method="post" onsubmit="setFormSubmitting()">
 					<!--#include file="components/editor.asp"-->
                     <br />
 					<input type="submit" class="btn btn-success btn-large" value="提交" />&nbsp;&nbsp;&nbsp;<a class="btn" href="">保存草稿</a>

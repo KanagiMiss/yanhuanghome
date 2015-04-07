@@ -16,14 +16,14 @@
     <!-- ####################################################################################################### -->
     <div class="wrapper col3">
         <div id="container">
-            <div id="content">
+            <div id="pagecontent">
             <%
             sub queryArticle(db, id)
                 response.expires=-1
-                sql="SELECT ncontent FROM "& db & " WHERE " & db & ".ID= " & id
+                sql="SELECT ntitle,ndate,ncontent FROM "& db & " WHERE " & db & ".ID= " & id
 
                 set conn=Server.CreateObject("ADODB.Connection")
-                conn.Provider="Microsoft.ACE.OLEDB.12.0"
+                conn.Provider=Application("dbProvider")
                 url = Server.Mappath("data/main.mdb")
                 conn.Open(url)
                 set rs=Server.CreateObject("ADODB.recordset")
@@ -33,7 +33,13 @@
                 light = true
                 do until rs.EOF
                     for each x in rs.Fields
-                        response.Write(x.value)
+                        if x.name="ntitle" then
+                            response.Write("<div class='title'>" &x.value& "</div>")
+                        elseif x.name="ndate" then
+                            response.Write("<div class='date'>" &x.value& "</div>")
+                        elseif x.name="ncontent" then
+                            response.Write("<div class='content'>" &x.value& "</div>")
+                        end if
                     next
                     rs.MoveNext
                 loop

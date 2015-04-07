@@ -45,7 +45,7 @@
                     sql="SELECT tname,tlnum,tsnum FROM tels"
 
                     set conn=Server.CreateObject("ADODB.Connection")
-                    conn.Provider="Microsoft.ACE.OLEDB.12.0"
+                    conn.Provider=Application("dbProvider")
                     url = Server.Mappath("data/main.mdb")
                     conn.Open(url)
                     set rs=Server.CreateObject("ADODB.recordset")

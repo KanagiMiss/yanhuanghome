@@ -30,6 +30,10 @@
         <li class="last"><a href="#">就业指导</a></li>
       </ul>
     </div>
+    <div class="footbox">
+        <h2>网站信息</h2>
+        <p>当前在线人数：<%response.write(Application("visitors"))%></p>
+    </div>
     <br class="clear" />
   </div>
 </div>

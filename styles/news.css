@@ -8,21 +8,80 @@ Licence: <a href="#">Website Template Licence</a>
 
 /* ----------------------------------------------news list-------------------------------------*/
 
-#content{display:block;}
+#listcontent{
+    display:block;
+    width:100%;
+    padding: 25px 18px 18px 25px;
+    font-size:15px;
+    }
 
-#content .news_list{
+#listcontent .news_list{
 	display:block;
 	float:left;
+    width:800px;
+    /*border: 1px solid #ddd;*/
+    border-radius: 6px;
+    padding-bottom: 10px;
+    padding-right: 45px;
+    margin-bottom: 6px;
 	}
 
-#content .news_list li{
+#listcontent .news_list li{
 	display:block;
-    width:800px;
-	margin:0 0 10px 0;
-	padding:0 0 8px 0;
+    width:100%;
+    padding-bottom: 6px;
 	border-bottom:1px dotted #999999;
 	}
 
-#content .news_list span.date{
+#listcontent .news_list span.date{
     float:right;
     }
+
+#listcontent div.pagination{
+    display: block;
+    margin-bottom: 50px;
+    float:left;
+    }
+
+#listcontent div.pagination ul{
+    display: inline-block;
+    margin-bottom: 0;
+    margin-left: 0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+
+#listcontent div.pagination li{
+    display: inline;
+    }
+    
+#listcontent div.pagination li:first-child a{
+    border-left-width: 1px;
+    border-radius: 3px 0 0 3px;
+    }
+
+#listcontent div.pagination li:last-child a{
+    border-radius: 0 3px 3px 0;
+    }
+
+#listcontent div.pagination a{
+    float: left;
+    padding: 0 14px;
+    line-height: 34px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    }
+
+#listcontent div.pagination a:hover,#listcontent div.pagination .active a {
+    background-color: #f5f5f5;
+    }
+
+#listcontent div.pagination .active a{
+    color: #999999;
+    cursor: default;
+    }
+    
+    
+    
+    
+    
+    

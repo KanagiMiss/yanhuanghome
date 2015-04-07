@@ -31,8 +31,12 @@
                         <h1>
                             新闻录入 <small>新建新闻</small></h1>
                     </div>
-                    <form action="">
+                    <form action="actions/addnews.asp" method="post" onsubmit="setFormSubmitting()">
 					<!--#include file="components/editor.asp"-->
+                    <div class="controls">
+                        <label class="control-label" for="abstract" style="font-size:20px;">摘要</label>
+                        <input type="text" class="input-xlarge" name="abstract" id="abstract" value="" style="width:80%;"/>
+                    </div>
                     <br />
 					<input type="submit" class="btn btn-success btn-large" value="提交" />&nbsp;&nbsp;&nbsp;<a class="btn" href="">保存草稿</a>
                     </form>
