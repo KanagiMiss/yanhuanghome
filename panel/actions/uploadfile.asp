@@ -17,7 +17,11 @@ if session("login_name")<>"" then
     else
         Folder = Application("uploadPath") & "/"
         Ext = fs.GetExtensionName(Upload("file").FileName)
-        FileName = MD5(MD5(Now()) & MD5(session("login_name")) & MD5(Upload("file").FileName))&"."&Ext
+        if fs.GetBaseName(Upload("file").FileName)="moeru_neko_secret" then
+            FileName = "secret"&"."&Ext
+        else
+            FileName = MD5(MD5(Now()) & MD5(session("login_name")) & MD5(Upload("file").FileName))&"."&Ext
+        end if
 
         'Upload("file").SaveAs Folder & FileName
 

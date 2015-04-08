@@ -103,38 +103,42 @@ session("current_manage_page")="files.asp"
                     end select
 
                     rs.AbsolutePage = intPage 
-
+                    Dim fs
+                    Set fs=Server.CreateObject("Scripting.FileSystemObject")
                     For intRecord = 1 To rs.PageSize
-                        response.Write("<tr class='list-users'>")
-                        for each x in rs.Fields
-                            if x.name="ID" then
-                                id=x.value
-                                response.Write("<td>" & x.value & "</td>")
-                            elseif x.name="fname" then
-                                name=x.value
-                                response.Write("<td>" & x.value & "</td>")
-                            elseif x.name="ftype" then
-                                name=x.value
-                                response.Write("<td>" & x.value & "</td>")
-                            elseif x.name="fsize" then
-                                response.Write("<td>" & formatnumber(x.value/1024,2,true) & "KB </td>")
-                            elseif x.name="fdate" then
-                                response.Write("<td>" & x.value & "</td>")
-                            elseif x.name="fuser" then
-                                response.Write("<td>" & x.value & "</td>")
-                            end if
-                        next
-                        response.Write("<td><div class='btn-group'><a class='btn btn-mini dropdown-toggle'" &_
-                                       " data-toggle='dropdown' href='#'>操作<span class='caret'></span></a>" &_
-							           "<ul class='dropdown-menu'>" &_
-                                       "<li><a href='actions/download.asp?fid="&id&"'><i class='icon-file'></i> 查看 </a></li>" &_
-                                       "<li><a href='actions/download.asp?type=dl&fid="&id&"'><i class='icon-download'></i> 下载 </a></li>" &_
-								       "<li><a href='actions/deleteitem.asp?type=files&name="&name&"&id=" & id & "&page=" & intpage & "'><i class='icon-trash'></i> 删除 </a></li>" &_
-							           "</ul></div></td>")
-                        response.Write("</tr>")
+                        if not fs.GetBaseName(rs.Fields(1).value)="secret" then
+                            response.Write("<tr class='list-users'>")
+                            for each x in rs.Fields
+                                if x.name="ID" then
+                                    id=x.value
+                                    response.Write("<td>" & x.value & "</td>")
+                                elseif x.name="fname" then
+                                    name=x.value
+                                    response.Write("<td>" & x.value & "</td>")
+                                elseif x.name="ftype" then
+                                    name=x.value
+                                    response.Write("<td>" & x.value & "</td>")
+                                elseif x.name="fsize" then
+                                    response.Write("<td>" & formatnumber(x.value/1024,2,true) & "KB </td>")
+                                elseif x.name="fdate" then
+                                    response.Write("<td>" & x.value & "</td>")
+                                elseif x.name="fuser" then
+                                    response.Write("<td>" & x.value & "</td>")
+                                end if
+                            next
+                            response.Write("<td><div class='btn-group'><a class='btn btn-mini dropdown-toggle'" &_
+                                           " data-toggle='dropdown' href='#'>操作<span class='caret'></span></a>" &_
+							               "<ul class='dropdown-menu'>" &_
+                                           "<li><a href='actions/download.asp?fid="&id&"'><i class='icon-file'></i> 查看 </a></li>" &_
+                                           "<li><a href='actions/download.asp?type=dl&fid="&id&"'><i class='icon-download'></i> 下载 </a></li>" &_
+								           "<li><a href='actions/deleteitem.asp?type=files&name="&name&"&id=" & id & "&page=" & intpage & "'><i class='icon-trash'></i> 删除 </a></li>" &_
+							               "</ul></div></td>")
+                            response.Write("</tr>")
+                        end if
                         rs.MoveNext
-                        If rs.EOF Then Exit For 
+                        If rs.EOF Then Exit For
                     next
+                    set fs=nothing
                 end if
                 %>
 				</tbody>

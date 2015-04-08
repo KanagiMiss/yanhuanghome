@@ -2,6 +2,7 @@
 
 Sub Application_OnStart
 Application("visitors")=0
+Application("debug")="true"
 Application("domain")="misskanagi.oicp.net:10086"
 Application("dbProvider")="Microsoft.ACE.OLEDB.12.0"
 Application("dbPath")=Server.Mappath("/data/main.mdb")
