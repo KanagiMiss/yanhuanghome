@@ -2,8 +2,11 @@
 
 Sub Application_OnStart
 Application("visitors")=0
+Application("domain")="misskanagi.oicp.net:10086"
 Application("dbProvider")="Microsoft.ACE.OLEDB.12.0"
 Application("dbPath")=Server.Mappath("/data/main.mdb")
+Application("uploadPath")=Server.Mappath("/uploads/")
+Application("connectionString")="PROVIDER=" & Application("dbProvider") & ";Data Source=" & Application("dbPath")
 End Sub
 
 Sub Session_OnStart

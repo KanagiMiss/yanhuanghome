@@ -1,4 +1,5 @@
 ﻿<!-- ####################################################################################################### -->
+<!--#INCLUDE FILE="../class/clsUpload.asp"-->
 <%
 if Request("type")<>"" and Request("id")<>"" then
     response.expires=-1
@@ -7,6 +8,17 @@ if Request("type")<>"" and Request("id")<>"" then
 		    sql="DELETE FROM news WHERE ID=" & Request("id") & ";"
 	    case "notification"
 		    sql="DELETE FROM notification WHERE ID=" & Request("id") & ";"
+        case "visitors"
+		    sql="DELETE FROM visitors WHERE ID=" & Request("id") & ";"
+        case "files"
+            'dim fs
+            'Set fs=Server.CreateObject("Scripting.FileSystemObject")
+            'Folder = Application("uploadPath") & "/"
+            'if fs.FileExists(Folder & request("name")) then
+            '  fs.DeleteFile(Folder & request("name"))
+            'end if
+            'set fs=nothing
+            sql="DELETE FROM files WHERE ID=" & Request("id") & ";"
     end select
 
     set conn=Server.CreateObject("ADODB.Connection")

@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿<%
+session("current_manage_page")="visitor-stats.asp"
+ %>
+
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -43,6 +47,7 @@
 						<th>离开时间</th>
 						<th>帐号名</th>
 						<th>帐号ID</th>
+                        <th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -94,6 +99,7 @@
                             response.Write("<tr class='list-users'>")
                             for each x in rs.Fields
                                 if x.name="ID" then
+                                    id=x.value
                                     response.Write("<td>" & x.value & "</td>")
                                 elseif x.name="ip" then
                                     response.Write("<td>" & x.value & "</td>")
@@ -105,6 +111,11 @@
                                     response.Write("<td>" & x.value & "</td>")
                                 end if
                             next
+                            response.Write("<td><div class='btn-group'><a class='btn btn-mini dropdown-toggle'" &_
+                                           " data-toggle='dropdown' href='#'>操作<span class='caret'></span></a>" &_
+							               "<ul class='dropdown-menu'>" &_
+								           "<li><a href='actions/deleteitem.asp?type=visitors&id=" & id & "&page=" & intpage & "'><i class='icon-trash'></i> 删除 </a></li>" &_
+							               "</ul></div></td>")
                             response.Write("</tr>")
                         end if
                         rs.MoveNext

@@ -28,6 +28,7 @@
                             session("login_name")=name
                             session("islogin")="yes"
                             conn.Execute "UPDATE visitors SET acountname='"&name&"',acountid="&uid&" WHERE ID="&Session("vid"), , adCmdText + adExecuteNoRecords
+                            conn.Execute "UPDATE users SET lastip='"&Session("client_ip")&"',lasttime=NOW() WHERE uname='"&name&"'", , adCmdText + adExecuteNoRecords
                             response.Redirect("../panel/index.asp")
                         else
                             response.Redirect("loginfailed.asp?err=1")

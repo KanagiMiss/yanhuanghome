@@ -153,6 +153,10 @@ div.wrapper h1, div.wrapper h2, div.wrapper h3, div.wrapper h4, div.wrapper h5, 
 	padding:0;
 	list-style:none;
 	}
+    
+#homecontent a{
+	font-size:15px;
+	}
 
 #homecontent p.readmore{
 	font-weight:bold;

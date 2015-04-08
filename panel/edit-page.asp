@@ -119,7 +119,7 @@ end sub
                             <div data-wysihtml5-dialog="insertImage" style="display: none;">
                                 <label>
                                     图片:
-                                    <input data-wysihtml5-dialog-field="src" value="http://">
+                                    <input data-wysihtml5-dialog-field="src" value="<%="http://"&Application("domain")&"/actions/download.asp?fid="%>">
                                 </label>
                                 <label>
                                     对齐:

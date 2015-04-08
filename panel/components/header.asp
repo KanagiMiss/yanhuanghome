@@ -22,7 +22,9 @@ end if
                 <ul class="dropdown-menu">
                     <li><a href="my-profile.asp">个人资料</a></li>
                     <li class="divider"></li>
-                    <li><a href="actions/logout.asp">退出后台</a></li>
+                    <li><a href="../index.asp">返回主站</a></li>
+                    <li class="divider"></li>
+                    <li><a href="actions/logout.asp">注销登录</a></li>
                 </ul>
             </div>
             <div class="nav-collapse">

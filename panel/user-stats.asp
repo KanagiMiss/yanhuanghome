@@ -41,13 +41,14 @@
                         <th>用户名</th>
 						<th>E-mail</th>
 						<th>电话号码</th>
-                        <th>最后登录</th>
+                        <th>最后登录时间</th>
+                        <th>最后登录IP</th>
 					</tr>
 				</thead>
 				<tbody>
                 <%
                 response.expires=-1
-                sql="SELECT ID,uname,uemail,uphone FROM users ORDER BY users.ID DESC;"
+                sql="SELECT ID,uname,uemail,uphone,lasttime,lastip FROM users ORDER BY users.ID DESC;"
 
                 set conn=Server.CreateObject("ADODB.Connection")
                 conn.Provider=Application("dbProvider")
@@ -92,9 +93,11 @@
                         if rs.Fields(0).value <> Session("vid") then
                             response.Write("<tr class='list-users'>")
                             for each x in rs.Fields
-                                response.Write("<td>" & x.value & "</td>")
+                                if x.name="ID" or x.name="uname" or x.name="uemail" or x.name="uphone" or x.name="lasttime" or x.name="lastip" then
+                                    response.Write("<td>" & x.value & "</td>")
+                                end if
                             next
-                            response.Write("<td></td></tr>")
+                            response.Write("</tr>")
                         end if
                         rs.MoveNext
                         If rs.EOF Then Exit For 
