@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="imagetoolbar" content="no" />
 <link rel="stylesheet" href="styles/layout.css" type="text/css" />
-<script type="text/javascript" src="scripts/jquery-1.4.1.min.js"></script>
+<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="scripts/jquery.slidepanel.setup.js"></script>
 <script type="text/javascript" src="scripts/jquery.cycle.min.js"></script>
 <script type="text/javascript" src="scripts/jquery.cycle.setup.js"></script>
@@ -89,7 +89,21 @@
 				    <ul>
                         <li><a href="notification.asp?action=prev&last=<%=intpage%>">上一页</a></li>
                         <%
-                        for i=1 to intPageCount
+                        basepage = intpage-2
+                        endpage = intpage+2
+                        if basepage < 1 then
+                            fixed = 1-basepage
+                            basepage = basepage+fixed
+                            endpage = endpage+fixed
+                        end if
+                        if endpage > intPageCount then
+                            fixed = endpage-intPageCount
+                            if basepage-fixed >= 1 then
+                                basepage = basepage-fixed
+                            end if
+                            endpage = endpage-fixed
+                        end if
+                        for i=basepage to endpage
                             toactive = ""
                             if i=intPage then
                                 toactive="active"

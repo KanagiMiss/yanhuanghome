@@ -9,7 +9,7 @@ Licence: <a href="#">Website Template Licence</a>
 #header #topnav{
     display:block;
 	float:left;
-	width:650px;
+	width:660px;
 	margin:20px 0 0 0;
 	padding:0;
 	font-size:13px;
@@ -24,7 +24,7 @@ Licence: <a href="#">Website Template Licence</a>
 
 #topnav li{
     float:left;
-    margin-right: 36px;
+    margin-right: 0px;
 	}
     
 #topnav li a:link, #topnav li a:visited, #topnav li a:hover{
@@ -33,65 +33,76 @@ Licence: <a href="#">Website Template Licence</a>
 	color:#F8F9F3;
 	text-transform:uppercase;
 	}
-    
-#topnav li.active a{
-    border-bottom:1px solid #2D3134;
+
+#topnav li a.topmenu,#topnav li a.popmenu{
+    text-align:center;
     }
 
-#topnav li a:hover, #topnav li.active a{
+#topnav li.active a.topmenu,#topnav li.active a.popmenu{
 	color:#02ACEE;
 	background-color:#2D3134;
+    border-bottom:1px solid #2D3134;
 	border-bottom-color:#02ACEE;
-	}
-
-#topnav ul ul li a:link, #topnav ul ul li a:visited{
-	border:none;
-	}
-
-#topnav li li a:link, #topnav li li a:visited{
-	width:72px;
-	float:none;
-	padding:7px 10px;
-	font-size:12px;
-	font-weight:normal;
-	color:#F8F9F3;
-	background-color:#072C53;
-	background-image:none;
-	}
-
-#topnav li li a:hover{
-	color:#5F8EC2;
-	background-color:#072C53;
-	}
-
-#topnav ul ul{
-	z-index:9999;
-	position:absolute;
-	left:-999em;
-	height:auto;
-	width:75px;
-	border-left:1px solid #66ccff;
-    border-right:18px solid #66ccff;
-    border-top:1px solid #66ccff;
-	border-bottom:1px solid #66ccff;
-	}
-
-#topnav ul ul a{
-	width:75px;
-	}
-
-#topnav li:hover ul{
-    text-align:left;
-	left:auto;
-	}
-
-#topnav li:hover{
-	position:static;
 	}
 
 #topnav li.last{
 	margin-right:0;
 	}
+
+#topnav .menu_class {
+    /*border:1px solid #1c1c1c;*/
+    display:block;
+    width: 82px;
+}
+
+#topnav li.menu_class:hover a.topmenu{
+    background-color:#6D7174;
+    border-radius:8px;
+}
+
+#topnav li.menu_class:hover a.popmenu{
+    background-color:#6D7174;
+    border-radius:8px 8px 0px 0px;
+}
+
+#topnav .submenu_class {
+    z-index:9999;
+    display:none;
+    width:82px;
+    /*border: 1px solid #1c1c1c;*/
+    position:absolute;
+}
+
+#topnav .submenu_class ul, #topnav .submenu_class  li {
+    margin:0; 
+    padding:0; 
+    list-style:none;
+}
+
+#topnav .submenu_class  a{
+    text-align:center;
+    width:82px;
+    background-color: #6D7174;
+}
+
+#topnav .submenu_class li {
+    background-color: #6D7174;
+    position: relative;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#topnav .submenu_class li a:hover {
+    font-weight:bold;
+    color: #66ccff;
+    background-color:#555555
+}
+
+#topnav .submenu_class li a {
+    color:#FFFFFF; 
+    text-decoration:none;  
+    display:block;
+}
 
 /* ----------------------------------------------Column Navigation-------------------------------------*/
 

@@ -38,7 +38,7 @@
                         <input type="text" class="input-xlarge" name="abstract" id="abstract" value="" style="width:80%;"/>
                     </div>
                     <br />
-					<input type="submit" class="btn btn-success btn-large" value="提交" />&nbsp;&nbsp;&nbsp;<a class="btn" href="">保存草稿</a>
+					<input type="submit" class="btn btn-success btn-large" value="提交" />&nbsp;&nbsp;&nbsp;<!--<a class="btn" href="#">保存草稿</a>-->
                     </form>
                 </div>
             </div>

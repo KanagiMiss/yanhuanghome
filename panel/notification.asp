@@ -85,7 +85,7 @@ session("current_manage_page")="notification.asp"
                     rs.AbsolutePage = intpage
 
                     For intRecord = 1 To rs.PageSize
-                        response.Write("<tr class='list-users'>")
+                        response.Write("<tr class='list-notification'>")
                         for each x in rs.Fields
                             if x.name="ID" then
                                 id=x.value
@@ -125,7 +125,21 @@ session("current_manage_page")="notification.asp"
 				<ul>
                     <li><a href="notification.asp?action=prev&last=<%=intpage%>">上一页</a></li>
                     <%
-                    for i=1 to intPageCount
+                    basepage = intpage-2
+                    endpage = intpage+2
+                    if basepage < 1 then
+                        fixed = 1-basepage
+                        basepage = basepage+fixed
+                        endpage = endpage+fixed
+                    end if
+                    if endpage > intPageCount then
+                        fixed = endpage-intPageCount
+                        if basepage-fixed >= 1 then
+                            basepage = basepage-fixed
+                        end if
+                        endpage = endpage-fixed
+                    end if
+                    for i=basepage to endpage
                         toactive = ""
                         if i=intpage then
                             toactive="active"

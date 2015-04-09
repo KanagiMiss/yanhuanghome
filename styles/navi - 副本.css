@@ -7,42 +7,89 @@ Licence: <a href="#">Website Template Licence</a>
 */
 
 #header #topnav{
-	display:block;
-	float:right;
+    display:block;
+	float:left;
 	width:650px;
-	margin:30px 0 0 0;
+	margin:20px 0 0 0;
 	padding:0;
 	font-size:13px;
 	font-family:Verdana, Arial, Helvetica, sans-serif;
 	text-align:right;
 	}
-	
-#header ul{
-	margin:0;
+
+#topnav ul, #topnav li{
 	padding:0;
 	list-style:none;
 	}
 
-#header li{
-	display:inline;
-	margin-right:35px;
+#topnav li{
+    float:left;
+    margin-right: 36px;
 	}
-
-#header li a:link, #header li a:visited, #header li a:hover{
-	margin:0;
-	padding:0 3px 10px 3px;
-	color:#FFFFFF;
-	background-color:#2D3134;
-	border-bottom:1px solid #2D3134;
+    
+#topnav li a:link, #topnav li a:visited, #topnav li a:hover{
+    display:block;
+	padding:15px 0;
+	color:#F8F9F3;
+	text-transform:uppercase;
 	}
+    
+#topnav li.active a{
+    border-bottom:1px solid #2D3134;
+    }
 
-#header li a:hover, #header li.active a{
+#topnav li a:hover, #topnav li.active a{
 	color:#02ACEE;
 	background-color:#2D3134;
 	border-bottom-color:#02ACEE;
 	}
 
-#header #topnav li.last{
+#topnav ul ul li a:link, #topnav ul ul li a:visited{
+	border:none;
+	}
+
+#topnav li li a:link, #topnav li li a:visited{
+	width:72px;
+	float:none;
+	padding:7px 10px;
+	font-size:12px;
+	font-weight:normal;
+	color:#F8F9F3;
+	background-color:#072C53;
+	background-image:none;
+	}
+
+#topnav li li a:hover{
+	color:#5F8EC2;
+	background-color:#072C53;
+	}
+
+#topnav ul ul{
+	z-index:9999;
+	position:absolute;
+	left:-999em;
+	height:auto;
+	width:75px;
+	border-left:1px solid #66ccff;
+    border-right:18px solid #66ccff;
+    border-top:1px solid #66ccff;
+	border-bottom:1px solid #66ccff;
+	}
+
+#topnav ul ul a{
+	width:75px;
+	}
+
+#topnav li:hover ul{
+    text-align:left;
+	left:auto;
+	}
+
+#topnav li:hover{
+	position:static;
+	}
+
+#topnav li.last{
 	margin-right:0;
 	}
 

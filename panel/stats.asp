@@ -36,6 +36,7 @@
 			<br />
 			<div id="visits" style="width:80%;height:300px;"></div>-->
             <br />
+            <p>域名：<%=Application("domain") %></p>
             <p>在线人数：<%=Application("visitors") %></p>
             <br />
 		  </div>

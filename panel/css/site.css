@@ -100,7 +100,7 @@ span.user-actions, td div.btn-group {
 table {
   background-color: #fdfdfd;
 }
-tr.pending-user:hover span.user-actions, tr.list-users:hover td div.btn-group, tr.list-roles:hover td div.btn-group {
+tr.list-pages:hover span.user-actions, tr.list-users:hover td div.btn-group, tr.list-news:hover td div.btn-group, tr.list-notification:hover td div.btn-group, tr.list-visitors:hover td div.btn-group, tr.list-files:hover td div.btn-group {
   visibility:visible;
 }
 
@@ -137,17 +137,35 @@ tr.pending-user:hover span.user-actions, tr.list-users:hover td div.btn-group, t
 	  padding-right: 10px;
 	  white-space: nowrap;
 	}
-	.list-users td:nth-of-type(1):before, .pending-user td:nth-of-type(1):before { content: "ID"; }
-	.list-users td:nth-of-type(2):before, .pending-user td:nth-of-type(2):before { content: "Name"; }
-	.list-users td:nth-of-type(3):before, .pending-user td:nth-of-type(3):before { content: "E-mail"; }
-	.list-users td:nth-of-type(4):before, .pending-user td:nth-of-type(4):before { content: "Phone"; }
-	.list-users td:nth-of-type(5):before, .pending-user td:nth-of-type(5):before { content: "City"; }
-	.list-users td:nth-of-type(6):before, .pending-user td:nth-of-type(6):before { content: "Role"; }
-	.list-users td:nth-of-type(7):before, .pending-user td:nth-of-type(7):before { content: "Status"; }
-	.list-users td:nth-of-type(8):before, .pending-user td:nth-of-type(8):before { content: "Actions"; }
-	.list-roles td:nth-of-type(1):before { content: "ID"; }
-	.list-roles td:nth-of-type(2):before { content: "Role"; }
-	.list-roles td:nth-of-type(3):before { content: "Description"; }
-	.list-roles td:nth-of-type(4):before { content: "Slug"; }
-	.list-roles td:nth-of-type(5):before { content: "Actions"; }
+	.list-users td:nth-of-type(1):before { content: "ID"; }
+	.list-users td:nth-of-type(2):before { content: "用户名"; }
+	.list-users td:nth-of-type(3):before { content: "E-mail"; }
+	.list-users td:nth-of-type(4):before { content: "电话号码"; }
+	.list-users td:nth-of-type(5):before { content: "最后登录时间"; }
+	.list-users td:nth-of-type(6):before { content: "最后登录IP"; }
+    .list-visitors td:nth-of-type(1):before { content: "ID"; }
+	.list-visitors td:nth-of-type(2):before { content: "IP地址"; }
+	.list-visitors td:nth-of-type(3):before { content: "来访时间"; }
+	.list-visitors td:nth-of-type(4):before { content: "离开时间"; }
+	.list-visitors td:nth-of-type(5):before { content: "帐号名"; }
+	.list-visitors td:nth-of-type(6):before { content: "帐号ID"; }
+    .list-news td:nth-of-type(1):before, .list-notification td:nth-of-type(1):before { content: "ID"; }
+	.list-news td:nth-of-type(2):before, .list-notification td:nth-of-type(2):before { content: "类型"; }
+	.list-news td:nth-of-type(3):before, .list-notification td:nth-of-type(3):before { content: "标题"; }
+	.list-news td:nth-of-type(4):before, .list-notification td:nth-of-type(4):before { content: "作者"; }
+	.list-news td:nth-of-type(5):before, .list-notification td:nth-of-type(5):before { content: "日期"; }
+    .list-pages td:nth-of-type(1):before { content: "ID"; }
+	.list-pages td:nth-of-type(2):before { content: "文章类型"; }
+	.list-pages td:nth-of-type(3):before { content: "标题"; }
+	.list-pages td:nth-of-type(4):before { content: "日期"; }
+	.list-pages td:nth-of-type(5):before { content: "操作"; }
+    .list-files td:nth-of-type(1):before { content: "ID"; }
+	.list-files td:nth-of-type(2):before { content: "文件名"; }
+	.list-files td:nth-of-type(3):before { content: "文件类型"; }
+	.list-files td:nth-of-type(4):before { content: "大小"; }
+	.list-files td:nth-of-type(5):before { content: "上传时间"; }
+    .list-files td:nth-of-type(6):before { content: "上传者"; }
+    tr.list-pages span.user-actions, tr.list-users td div.btn-group, tr.list-news td div.btn-group, tr.list-notification td div.btn-group, tr.list-visitors td div.btn-group, tr.list-files td div.btn-group {
+      visibility:visible;
+    }
 }

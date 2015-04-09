@@ -262,9 +262,9 @@ div.wrapper h1, div.wrapper h2, div.wrapper h3, div.wrapper h4, div.wrapper h5, 
     }
 
 #pagecontent div.title{
-    color:#66ccff;
+    color:#2D3D41;
     font-weight:bold;
-    font-size:26px;
+    font-size:30px;
     text-align:center;
     margin-bottom:10px;
     /*border-bottom:1px dotted #999999;
@@ -283,6 +283,14 @@ div.wrapper h1, div.wrapper h2, div.wrapper h3, div.wrapper h4, div.wrapper h5, 
     margin-bottom:16px;
     }
 
+#pagecontent .wysiwyg-float-right{
+    /*position: absolute;*/
+    right: 0px;
+    }
+
+#pagecontent .wysiwyg-float-left{
+    left: 0px;
+    }
 
 /* ------Comments-----*/
 

@@ -134,7 +134,7 @@
                         session("current_manage_page")="notification.asp"
                     end if
                     do until rs.EOF
-                        response.Write("<tr class='pending-user'>")
+                        response.Write("<tr class='list-pages'>")
                         for each x in rs.Fields
                             if x.name="ID" then
                                 id=x.value

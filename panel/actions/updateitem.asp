@@ -13,7 +13,7 @@ if Request("type")<>"" and Request("id")<>"" then
 
     set conn=Server.CreateObject("ADODB.Connection")
     conn.Provider=Application("dbProvider")
-    url = Server.Mappath("../../data/main.mdb")
+    url=Application("dbPath")
     conn.Open(url)
     set rs=Server.CreateObject("ADODB.recordset")
     rs.Open sql,conn,1,3
