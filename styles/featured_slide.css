@@ -53,6 +53,7 @@ Licence: <a href="#">Website Template Licence</a>
 	}
 
 .featured_box img{
+    position:relative;
 	display:block;
 	float:left;
 	width:960;

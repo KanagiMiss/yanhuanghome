@@ -71,7 +71,7 @@ end sub
   </div>
 </div>
 <!-- ####################################################################################################### -->
-<div class="wrapper col1">
+<div class="wrapper col1" style="z-index:9999;">
   <div id="header">
     <div id="logo">
       <h1>炎黄职业技术学院</a></h1>
@@ -138,6 +138,19 @@ end sub
     <br class="clear" />
   </div>
 </div>
+<!--[if IE]>
+       <style>
+            #topnav{
+                height:48px;
+            }
+            #topnav .menu_class {
+                zoom:1;
+            }
+            #topnav .submenu_class {
+                position:relative;
+            }
+       </style>
+<![endif]-->
 <script type="text/javascript">
     $(document).ready(function () {
         $(".menu_class").hover(

@@ -22,12 +22,12 @@ Licence: <a href="#">Website Template Licence</a>
 	list-style:none;
 	}
 
-#topnav li{
+#topnav li.menu_class{
     float:left;
     margin-right: 0px;
 	}
     
-#topnav li a:link, #topnav li a:visited, #topnav li a:hover{
+#topnav li.menu_class a:link, #topnav li.menu_class a:visited, #topnav li.menu_class a:hover{
     display:block;
 	padding:15px 0;
 	color:#F8F9F3;
@@ -57,20 +57,24 @@ Licence: <a href="#">Website Template Licence</a>
 
 #topnav li.menu_class:hover a.topmenu{
     background-color:#6D7174;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
     border-radius:8px;
 }
 
 #topnav li.menu_class:hover a.popmenu{
     background-color:#6D7174;
+    -moz-border-radius: 8px 8px 0px 0px;
+    -webkit-border-radius: 8px 8px 0px 0px;
     border-radius:8px 8px 0px 0px;
 }
 
 #topnav .submenu_class {
-    z-index:9999;
     display:none;
     width:82px;
     /*border: 1px solid #1c1c1c;*/
     position:absolute;
+    z-index:9999;
 }
 
 #topnav .submenu_class ul, #topnav .submenu_class  li {

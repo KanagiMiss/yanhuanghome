@@ -4,8 +4,9 @@
 <title>炎黄职业技术学院</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="imagetoolbar" content="no" />
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
 <link rel="stylesheet" href="styles/layout.css" type="text/css" />
-<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="scripts/jquery-1.4.1.min.js"></script>
 <script type="text/javascript" src="scripts/jquery.slidepanel.setup.js"></script>
 <script type="text/javascript" src="scripts/jquery.cycle.min.js"></script>
 <script type="text/javascript" src="scripts/jquery.cycle.setup.js"></script>
@@ -14,7 +15,7 @@
 <!--#include file="include/index.inc"-->
 <!--#include file="components/header.asp"-->
 <!-- ####################################################################################################### -->
-<div class="wrapper col2" style="position:relative;z-index:1;">
+<div class="wrapper col2">
   <div id="featured_slide">
     <div class="featured_box"><a href="#"><img src="images/1.jpg" alt="" /></a>
       <!--<div class="floater">
