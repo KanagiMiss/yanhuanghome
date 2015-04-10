@@ -9,6 +9,9 @@ if Request("type")<>"" and Request("id")<>"" then
 	    case "notification"
 		    sql="UPDATE notification SET ntitle='"&Request.Form("title")&"',ncontent='"&_
                 Request.Form("content")&"'" & " WHERE ID="&Request("id")&";"
+        case "tels"
+            sql="UPDATE tels SET tname='"&Request.Form("name")&"',tcount="&Request.Form("count")&_
+            ",tlnum='"&Request.Form("lnum")&"',tsnum='"&Request.Form("snum")&"'" & " WHERE ID="&Request("id")&";"
     end select
 
     set conn=Server.CreateObject("ADODB.Connection")

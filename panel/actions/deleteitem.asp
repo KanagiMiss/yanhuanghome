@@ -10,6 +10,9 @@ if Request("type")<>"" and Request("id")<>"" and Session("login_name")<>"" then
 	    case "notification"
 		    sql="DELETE FROM notification WHERE ID=" & Request("id") & ";"
             url=Application("dbPath")
+        case "tels"
+            sql="DELETE FROM tels WHERE ID=" & Request("id") & ";"
+            url=Application("dbPath")
         case "visitors"
 		    sql="DELETE FROM visitors WHERE ID=" & Request("id") & ";"
             url=Application("dbPath")

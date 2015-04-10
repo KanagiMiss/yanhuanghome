@@ -43,6 +43,8 @@ session("current_manage_page")="visitor-stats.asp"
 					<tr>
 						<th>ID</th>
                         <th>IP地址</th>
+                        <th>国家/地区</th>
+                        <th>ISP</th>
 						<th>来访时间</th>
 						<th>离开时间</th>
 						<th>帐号名</th>
@@ -53,7 +55,7 @@ session("current_manage_page")="visitor-stats.asp"
 				<tbody>
                 <%
                 response.expires=-1
-                sql="SELECT ID,ip,entertime,leavetime,acountname,acountid FROM visitors ORDER BY visitors.ID DESC;"
+                sql="SELECT ID,ip,country,isp,entertime,leavetime,acountname,acountid FROM visitors ORDER BY visitors.ID DESC;"
 
                 set conn=Server.CreateObject("ADODB.Connection")
                 conn.Provider=Application("dbProvider")
@@ -102,6 +104,10 @@ session("current_manage_page")="visitor-stats.asp"
                                     id=x.value
                                     response.Write("<td>" & x.value & "</td>")
                                 elseif x.name="ip" then
+                                    response.Write("<td>" & x.value & "</td>")
+                                elseif x.name="country" then
+                                    response.Write("<td>" & x.value & "</td>")
+                                elseif x.name="isp" then
                                     response.Write("<td>" & x.value & "</td>")
                                 elseif x.name="entertime" or x.name="leavetime" then
                                     response.Write("<td>" & x.value & "</td>")

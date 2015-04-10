@@ -13,6 +13,9 @@ end sub
             <li class="<%call getActive("新闻管理")%>"><a href="news.asp">新闻管理</a></li>
             <li class="<%call getActive("通知管理")%>"><a href="notification.asp">通知管理</a></li>
             <li class="<%call getActive("文件管理")%>"><a href="files.asp">文件管理</a></li>
+            <li class="<%call getActive("办公电话")%>"><a href="tels.asp">办公电话</a></li>
+            <li class="<%call getActive("炎黄校历")%>"><a href="calendar.asp">炎黄校历</a></li>
+            <li class="<%call getActive("校园地图")%>"><a href="map.asp">校园地图</a></li>
             <li class="nav-header"><i class="icon-signal"></i>统计</li>
             <li class="<%call getActive("概览")%>"><a href="stats.asp">概览</a></li>
             <li class="<%call getActive("用户")%>"><a href="user-stats.asp">用户</a></li>

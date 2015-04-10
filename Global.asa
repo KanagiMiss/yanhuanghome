@@ -1,5 +1,5 @@
+<script language="vbscript" runat="server" src="include/clsIPAddr.inc"></script>
 <script language="vbscript" runat="server">
-
 Sub Application_OnStart
 Application("visitors")=0
 Application("debug")="true"
@@ -7,9 +7,12 @@ Application("domain")="misskanagi.oicp.net:10086"
 Application("dbProvider")="Microsoft.ACE.OLEDB.12.0"
 Application("dbPath")=Server.Mappath("/data/main.mdb")
 Application("auxDbPath")=Server.Mappath("/data/auxiliary.mdb")
+Application("ipDbPath")=Server.Mappath("/data/ipaddress.mdb")
+Application("rootPath")=Server.Mappath("/")
 Application("uploadPath")=Server.Mappath("/uploads")
 Application("connectionString")="PROVIDER=" & Application("dbProvider") & ";Data Source=" & Application("dbPath")
 Application("auxConnectionString")="PROVIDER=" & Application("dbProvider") & ";Data Source=" & Application("auxDbPath")
+Application("ipConnectionString")="PROVIDER=" & Application("dbProvider") & ";Data Source=" & Application("ipDbPath")
 End Sub
 
 Sub Session_OnStart
@@ -18,17 +21,21 @@ Application("visitors")=Application("visitors")+1
 Application.UnLock
 Session.TimeOut=3
 Session("client_ip")=Request.ServerVariables("REMOTE_ADDR")
-
+Dim ipreg,country,isp
+Set ipreg= New IPAddr
+ipreg.IpAddress=Session("client_ip")
+country=ipreg.IpAddrLocation
+isp=ipreg.IpAddrISP
 set conn=Server.CreateObject("ADODB.Connection")
 conn.Provider=Application("dbProvider")
 url = Application("dbPath")
 conn.Open(url)
-conn.Execute "INSERT INTO visitors(ip,entertime,leavetime) values('"&Session("client_ip")&"',NOW(),NOW())", , adCmdText + adExecuteNoRecords
+conn.Execute "INSERT INTO visitors(ip,entertime,leavetime,country,isp) values('"&Session("client_ip")&"',NOW(),NOW(),'"&country&"','"&isp&"')", , adCmdText + adExecuteNoRecords
 set rs=conn.Execute("SELECT @@Identity", , adCmdText)
 Session("vid")=rs.Fields(0).Value
 rs.Close
 conn.Close
-
+Set ipreg=Nothing
 End Sub
 
 Sub Session_OnEnd
