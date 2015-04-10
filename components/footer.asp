@@ -40,8 +40,8 @@
 <!-- ####################################################################################################### -->
 <div class="wrapper col5">
   <div id="copyright">
-    <p class="fl_left">Copyright &copy; 2015 - All Rights Reserved - <a href="#">www.yhust.edu.cn</a></p>
-    <p class="fl_right"><a href="http://www.yhust.edu.cn/" title="炎黄职业技术学院">炎黄职业技术学院</a></p>
+    <p class="fl_left">Copyright &copy; 2015 - All Rights Reserved - <a href="#"><%=Application("domain")%></a></p>
+    <p class="fl_right"><a href="http://<%=Application("domain")%>" title="炎黄职业技术学院">炎黄职业技术学院</a></p>
     <br class="clear" />
   </div>
 </div>

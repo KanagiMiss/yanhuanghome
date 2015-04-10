@@ -71,11 +71,12 @@ end sub
   </div>
 </div>
 <!-- ####################################################################################################### -->
-<div class="wrapper col1" style="z-index:9999;">
+<div class="wrapper col1 navi-fixed-top">
   <div id="header">
     <div id="logo">
-      <h1>炎黄职业技术学院</a></h1>
-      <p>Progenitor Vocational & Technical College</p>
+      <!--<h1>炎黄职业技术学院</a></h1>
+      <p>Progenitor Vocational & Technical College</p>-->
+      <a href="http://<%=Application("domain")%>"><i class="logo"></i></a>
     </div>
     <div id="topnav">
       <ul>

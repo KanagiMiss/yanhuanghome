@@ -105,6 +105,15 @@ div.wrapper h1, div.wrapper h2, div.wrapper h3, div.wrapper h4, div.wrapper h5, 
 #logo h1 a{
 	display:block;
 	}
+    
+#logo .logo{
+    display:block;
+    background-image:url("../images/logo270x90.png");
+    background-position: 0px 0px;
+    background-repeat:no-repeat;
+	width:300x;
+    height: 70px;
+	}
 
 /* ----------------------------------------------BreadCrumb-------------------------------------*/
 

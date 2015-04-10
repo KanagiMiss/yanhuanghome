@@ -22,8 +22,9 @@ end sub
 <div class="wrapper col1 navi-fixed-top">
   <div id="header">
     <div id="logo">
-      <h1>炎黄职业技术学院</a></h1>
-      <p>Progenitor Vocational & Technical College</p>
+      <!--<h1>炎黄职业技术学院</a></h1>
+      <p>Progenitor Vocational & Technical College</p>-->
+      <a href="http://<%=Application("domain")%>"><i class="logo"></i></a>
     </div>
     <div id="topnav">
       <ul>
@@ -86,6 +87,19 @@ end sub
     <br class="clear" />
   </div>
 </div>
+<!--[if IE]>
+       <style>
+            #topnav{
+                height:48px;
+            }
+            #topnav .menu_class {
+                zoom:1;
+            }
+            #topnav .submenu_class {
+                position:relative;
+            }
+       </style>
+<![endif]-->
 <script type="text/javascript">
     $(document).ready(function () {
         $(".menu_class").hover(
